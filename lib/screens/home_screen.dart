@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_ui/data/data.dart';
 
+import '../widgets/recent_orders.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -73,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
             ),
           ),
+          RecentOrders(),
         ],
       ),
     );
