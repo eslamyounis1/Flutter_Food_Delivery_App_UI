@@ -167,6 +167,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
           ),
           Expanded(
             child: GridView.count(
+              physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.all(10.0),
               crossAxisCount: 2,
               children: List.generate(widget.restaurant.menu.length, (index) {
@@ -186,8 +187,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
         alignment: Alignment.center,
         children: [
           Container(
-            height: 175.0,
-            width: 175.0,
+            height: 155.0,
+            width: 155.0,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
@@ -199,8 +200,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
             ),
           ),
           Container(
-            height: 175.0,
-            width: 175.0,
+            height: 155.0,
+            width: 155.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
               gradient: LinearGradient(
