@@ -27,7 +27,9 @@ class RecentOrders extends StatelessWidget {
           height: 120,
           // color: Colors.blue,
           child: ListView.builder(
-            padding: const EdgeInsetsDirectional.only(start:12,),
+            padding: const EdgeInsetsDirectional.only(
+              start: 12,
+            ),
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: currentUser.orders.length,
@@ -116,15 +118,22 @@ class RecentOrders extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsetsDirectional.only(end: 20.0),
+              margin: const EdgeInsetsDirectional.only(
+                end: 20.0,
+              ),
               width: 48.0,
-              // child: FloatingActionButton(
-              //   onPressed: () {},
-              //   child: const Icon(
-              //     Icons.add,
-              //     size: 30.0,
-              //   ),
-              // ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.add,
+                ),
+                iconSize: 30.0,
+                color: Colors.white,
+                onPressed: () {},
+              ),
             ),
           ],
         ),
