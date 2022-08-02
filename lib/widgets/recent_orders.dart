@@ -118,13 +118,13 @@ class RecentOrders extends StatelessWidget {
             Container(
               margin: const EdgeInsetsDirectional.only(end: 20.0),
               width: 48.0,
-              child: FloatingActionButton(
-                onPressed: () {},
-                child: const Icon(
-                  Icons.add,
-                  size: 30.0,
-                ),
-              ),
+              // child: FloatingActionButton(
+              //   onPressed: () {},
+              //   child: const Icon(
+              //     Icons.add,
+              //     size: 30.0,
+              //   ),
+              // ),
             ),
           ],
         ),
