@@ -27,7 +27,7 @@ class RecentOrders extends StatelessWidget {
           height: 120,
           // color: Colors.blue,
           child: ListView.builder(
-            padding: const EdgeInsetsDirectional.only(start:12 ),
+            padding: const EdgeInsetsDirectional.only(start:12,),
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: currentUser.orders.length,
