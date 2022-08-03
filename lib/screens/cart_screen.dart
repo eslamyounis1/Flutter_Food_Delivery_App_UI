@@ -14,6 +14,10 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    double totalPrice = 0;
+    currentUser.cart.forEach((Order order) {
+      totalPrice += order.quantity * order.food.price;
+    });
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -31,14 +35,94 @@ class _CartScreenState extends State<CartScreen> {
       body: ListView.separated(
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          Order order = currentUser.cart[index];
-          return _buildCartItem(order);
+          if (index < currentUser.cart.length) {
+            Order order = currentUser.cart[index];
+            return _buildCartItem(order);
+          } else {
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        'Estimated Delivery Time',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        '25 min',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Total Cost',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        '\$${totalPrice.toStringAsFixed(2)}',
+                        // toStringAsFixed specify numbers of digits after decimal points
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.green[700],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 80.0,),
+                ],
+              ),
+            );
+          }
         },
         separatorBuilder: (context, index) => const Divider(
           color: Colors.grey,
           height: 1.0,
         ),
-        itemCount: currentUser.cart.length,
+        itemCount: currentUser.cart.length + 1,
+      ),
+      bottomSheet: Container(
+        height: 75.0,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(0, -1),
+              blurRadius: 6.0,
+            ),
+          ],
+        ),
+        child:  Center(
+          child: MaterialButton(
+            onPressed: (){},
+            child: const Text(
+              'CHECKOUT',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 22.0,
+                letterSpacing: 2.0
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -73,7 +157,7 @@ class _CartScreenState extends State<CartScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          orderedItem.food.name ,
+                          orderedItem.food.name,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               fontSize: 20.0, fontWeight: FontWeight.bold),
@@ -153,8 +237,8 @@ class _CartScreenState extends State<CartScreen> {
             child: Text(
               '\$${orderedItem.quantity * orderedItem.food.price}',
               style: const TextStyle(
-                fontWeight:FontWeight.w600 ,
-                fontSize:16.0 ,
+                fontWeight: FontWeight.w600,
+                fontSize: 16.0,
               ),
             ),
           ),
