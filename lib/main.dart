@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Food Delivery UI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+        ),
         scaffoldBackgroundColor: Colors.grey[50],
         primaryColor: Colors.deepOrange,
         primarySwatch: Colors.deepOrange,

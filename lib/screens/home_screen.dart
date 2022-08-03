@@ -6,6 +6,7 @@ import 'package:flutter_food_delivery_ui/screens/resturant_screen.dart';
 
 import '../widgets/rating_stars.dart';
 import '../widgets/recent_orders.dart';
+import 'cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text(
           'Food Delivery',
         ),
-        centerTitle: true,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return const CartScreen();
+                }),
+              );
+            },
             child: Text(
               'Cart (${currentUser.cart.length})',
               style: const TextStyle(

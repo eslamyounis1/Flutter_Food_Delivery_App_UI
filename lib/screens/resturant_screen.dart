@@ -108,7 +108,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                height: 30.0,
+                height: 32.0,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 6.0,
                 ),
@@ -128,7 +128,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 ),
               ),
               Container(
-                height: 30.0,
+                height: 32.0,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 6.0,
                 ),
